@@ -1,5 +1,5 @@
-# raspi-zero-garage-control
-(INCOMPLETE)
+# raspi-zero-garage-control (INCOMPLETE)
+
 Garage Status Indicator/Controller, using a Raspberry Pi Zero W custom Bonnet, with Rust-based software stack.
 
 ## Hardware
