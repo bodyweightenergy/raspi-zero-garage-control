@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:raspi-zero-hat-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -384,8 +383,6 @@ Wire Wire Line
 	2900 1900 4500 1900
 Wire Wire Line
 	7650 2600 6900 2600
-Wire Wire Line
-	2900 1500 4200 1500
 $Comp
 L Device:LED D2
 U 1 1 5B76D8B5
@@ -457,7 +454,7 @@ Connection ~ 3100 1200
 Wire Wire Line
 	5850 2100 5600 2100
 Wire Wire Line
-	5600 2100 5600 1400
+	5600 1500 5600 2100
 Wire Wire Line
-	5600 1400 2900 1400
+	2900 1500 5600 1500
 $EndSCHEMATC
