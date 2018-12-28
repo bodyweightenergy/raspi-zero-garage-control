@@ -19,9 +19,10 @@ safeRunCommand() {
 HOST=$(cat target_host.txt)
 
 # Build
-safeRunCommand "cargo build --target=arm-unknown-linux-gnueabihf"
+#safeRunCommand "cargo build --target=arm-unknown-linux-gnueabihf"
+safeRunCommand "cross build --target arm-unknown-linux-gnueabihf --release"
 
 # Post-build
 ssh $HOST "pkill garage_control"	# kill previous executable instance
-scp target/arm-unknown-linux-gnueabihf/debug/garage_control $HOST:~/remote_build/garage_control
+scp target/arm-unknown-linux-gnueabihf/release/garage_control $HOST:~/remote_build/garage_control
 ssh  $HOST "~/remote_build/garage_control"
