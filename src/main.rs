@@ -60,7 +60,24 @@ fn main() {
 	gpio.set_mode(SENSE_PIN, Mode::Input);
 
 	let gpio_mutex = Arc::new(Mutex::new(gpio));
+	let gpio_hb_clone = gpio_mutex.clone();
 
+	// Start heartbeat LED
+	let _hb_thread = thread::spawn(move || {
+		let gpio = gpio_hb_clone;
+		loop {
+			{
+				gpio.lock().unwrap().write(STATUS_LED, Level::High);
+			}
+			sleep(Duration::from_secs(1));
+			{
+				gpio.lock().unwrap().write(STATUS_LED, Level::Low);
+			}
+			sleep(Duration::from_secs(1));
+		}
+	});
+
+	// Initialize web server
 	::std::env::set_var("RUST_LOG", "actix_web=info");
 	env_logger::init();
 	let sys = actix::System::new("ws-example");
